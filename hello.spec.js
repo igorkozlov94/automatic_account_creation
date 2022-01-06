@@ -24,15 +24,14 @@ const { chromium } = require('playwright');
   //screenshot
   await page.screenshot({ path: "page.png", fullPage: true });
   await page.click('button:has-text("Create an Account")');
-  // click text "Thank you for..."
+  // wait text "Thank you for..."
   await page.waitForSelector("text=Thank you for registering with Main Website Store.");
   await page.screenshot({ path: "finalpage.png", fullPage: true });
-
+  // generation password
   function generatePassword() {
     var password = "";
     var alphabet = "abcdefghijklmnopqrstuvwxyz";
     for (var i = 0; i < 9; i++) {
-      //charAt - значние элемента по индексу
       password += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
     }
     password = password.charAt(0).toUpperCase() + password.substring(1);
